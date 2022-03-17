@@ -8,9 +8,9 @@
 
 def solution(phone_number):
     answer = ''
-    phonenum = len(phone_number)
-    # answer = '*' * (phonenum - 4)
-    answer = phone_number[-4:]
+    lenPhoneNum = len(phone_number)
+    answer='*'*(lenPhoneNum-4)
+    answer += phone_number[-4:]
+        
     return answer
-
-print(solution("01094090862"))
+    
