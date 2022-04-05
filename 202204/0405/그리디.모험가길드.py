@@ -13,16 +13,6 @@
 # 또한 몇 명의 모험가는 마을에 그대로 남아 있어도 되기 때문에, 모든 모험가를 특정한 그룹에 넣을 필요는 없습니다.
 
 n = int(input())
-scare = list(map(int,input().split()))
-scare.sort()
-result = 0
-
-
-print(result)
-
-# 다른 풀이
-
-n = int(input())
 phobia = list(map(int, input().split()))
 phobia.sort()
 
@@ -36,3 +26,4 @@ for p in phobia:
         group = 0
 
 print(count)
+
