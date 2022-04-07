@@ -7,3 +7,17 @@
 #
 # 출력
 # 첫째 줄에 주어진 동전들로 만들 수 없는 양의 정수 금액 중 최솟값을 출력한다.
+
+
+n = int(input())
+coin = list(map(int,input().split()))
+coin.sort()
+target = 1
+
+for i in coin:
+    if target >= i:
+        target+=i
+    else:
+        break
+
+print(target)

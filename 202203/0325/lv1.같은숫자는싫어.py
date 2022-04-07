@@ -27,3 +27,14 @@ def solution(arr):
         elif arr[i] != arr[i-1]:
             answer.append(arr[i])
     return answer
+
+
+# 다른풀이
+def solution(arr):
+    answer = []
+    arr.append(-1)
+    for i in range(len(arr) - 1):
+        if arr[i] != arr[i + 1]:
+            answer.append(arr[i])
+
+    return answer

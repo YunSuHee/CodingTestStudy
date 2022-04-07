@@ -24,21 +24,51 @@
 # 예제 #2
 # 3번 학생이 2번 학생이나 4번 학생에게 체육복을 빌려주면 학생 4명이 체육수업을 들을 수 있습니다.
 
+
+# 괜찮은 풀이
 def solution(n, lost, reserve):
-    for res in reserve:
-        if res in lost:
-            lost.remove(res)
-            reserve.remove(res)
-        answer = n - len(lost)
-    for i in lost:
-        if i in reserve:
-            answer += 1
-            reserve.remove(i)
-        elif i - 1 in reserve:
-            answer += 1
-            reserve.remove(i - 1)
-        elif i + 1 in reserve:
-            answer += 1
-            reserve.remove(i + 1)
+    answer = 0
+    _lost = set(lost)-set(reserve)
+    _reserve = set(reserve)-set(lost)
+    for i in _reserve:
+        if i-1 in _lost:
+            _lost.remove(i-1)
+        elif i+1 in _lost:
+            _lost.remove(i+1)
+    answer = n - len(_lost)
+    return answer
+
+#너무 길어.. 내꺼는
+def solution(n, lost, reserve):
+    answer = 0
+    arr = [1] * (n+2)
+    update_lost = set(lost)-set(reserve)
+
+    update_reserve = set(reserve)-set(lost)
+
+    for i in update_lost:
+        arr[i] = 0
+    for i in update_reserve:
+        arr[i] =2
+    arr[0] = 0
+    arr[n+1]=0
+
+    for i in range(1,n+1):
+        if arr[i] != 0:
+            print("1",arr,i)
+            continue
+        elif arr[i] == 0 and arr[i-1] ==2:
+            arr[i-1] = 1
+            arr[i]= 1
+            print("2",arr,i)
+            continue
+        elif arr[i] ==0 and  arr[i+1] ==2:
+            arr[i+1] =1
+            arr[i] =1
+            continue
+
+            print("3",arr,i)
+    answer=arr.count(1)+ arr.count(2)
+
 
     return answer
