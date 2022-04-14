@@ -23,3 +23,8 @@ def solution(participant,completion):
         if p != c:
             return p
     return participant.pop()
+
+participant =["leo", "kiki", "eden"]
+completion =["eden", "kiki"]
+
+print(solution(participant,completion))
