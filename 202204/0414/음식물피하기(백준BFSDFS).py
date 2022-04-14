@@ -26,3 +26,76 @@
 # 1 1
 # 예제 출력
 # 4
+
+# 런타임 에러 bfs로 풀기
+# def dfs(x,y):
+#
+#     if x<0 or y<0 or x>=n or y>=m or graph[x][y]==0:
+#         return 0
+#     if graph[x][y] == 1:
+#         global sum
+#         sum+=1
+#         graph[x][y] =0
+#         dfs(x,y+1)
+#         dfs(x,y-1)
+#         dfs(x+1,y)
+#         dfs(x-1,y)
+#         return sum
+#     return 0
+#
+# n,m,k = map(int,input().split())
+# sum =0
+# graph=[[0]*m for i in range(n)]
+# for i in range (k):
+#     x,y = map(int,input().split())
+#     graph[x-1][y-1] = 1
+# total =[]
+# for i in range (n):
+#     for j in range (m):
+#         total.append(dfs(i,j))
+#         sum =0
+#
+# print(max(total))
+
+
+# bfs
+from collections import deque
+def bfs(x,y):
+    queue = deque()
+    queue.append((x,y))
+    sum=1
+    while queue:
+        x, y = queue.popleft()
+        graph[x][y]=0
+        for i in range(4):
+            mx = x + dx[i]
+            my = y + dy[i]
+            if mx<0 or my<0 or mx>=n or my>=m or graph[mx][my]==0:
+                continue
+            if graph[mx][my] == 1:
+                queue.append((mx,my))
+                sum+=1
+                graph[mx][my]=0
+    return sum
+
+
+n,m,k = map(int,input().split())
+
+graph=[[0]*m for i in range(n)]
+for i in range (k):
+    x,y = map(int,input().split())
+    graph[x-1][y-1] = 1
+total =[]
+dx =[1,-1,0,0]
+dy=[0,0,1,-1]
+for i in range (n):
+    for j in range (m):
+        if graph[i][j] == 1:
+            total.append(bfs(i,j))
+        else:
+            continue
+
+print(max(total))
+
+
+
