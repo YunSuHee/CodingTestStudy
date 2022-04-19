@@ -77,3 +77,17 @@ def solution(nums):
             answer = max
 
     return answer
+
+# 넘 어렵게 생각한듯...ㅋㅋ
+def solution(nums):
+    choose = int(len(nums) / 2)  # 주어지는 리스트는 항상 짝수
+    nums = set(nums)  # set으로 중복 제거
+
+    answer = min(len(nums), choose)
+
+    return answer
+
+#다른사람 코드
+
+def solution(ls):
+    return min(len(ls)/2, len(set(ls)))
