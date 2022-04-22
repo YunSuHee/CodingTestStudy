@@ -35,9 +35,11 @@ abckkkkkkkkkkkk
 - 고유한 값을 가진다(중복 불가능)     
 **따라서 set(리스트) 하면 리스트 값중 중복되는 값 제거해줌**
 - 교집합, 합집합, 차집합을 구할 수 있다.
+
 ```
 s1 = set([1, 2, 3, 4, 5])
 s2 = set([4, 5, 6, 7, 8])
+
  
 # 교집합 메서드 intersection
 print(s1.intersection(s2))
@@ -74,6 +76,10 @@ print(s2 - s1)
 {8, 6, 7} 
 
 ```
+   ### 이중 리스트 중복 제거
+   - list 안에 있는 list를 tuple로 변환하고 set으로 다시 중복 제거 하기
+   - set(list(map(tuple,[[9, 9], [], [], [9, 9]])))
+    
 
 ## find, index 함수 - 인덱스, 위치를 찾는 함수
 
@@ -209,7 +215,7 @@ print(s2 - s1)
 
 ```
 f= lambda x:x+10
-print(f(10)
+print(f(10))
 
 >>> 20
 
