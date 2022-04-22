@@ -106,3 +106,5 @@ def solution(N, stages):
 #  result는 dictionary이므로 sorted에 result를 그냥 넘기면 result의 keys가 들어갑니다.
 #  keys는 생략이 가능합니다. 거기에 lambda는 기준을 result[x]: 즉 value로 정렬한다는 뜻입니다. 그래서 key가 출력되게 됩니다.
 
+
+

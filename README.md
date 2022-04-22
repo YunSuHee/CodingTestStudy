@@ -171,6 +171,38 @@ print(s2 - s1)
     >>> d.get('a') : 123123
     ```
   ### dict 정렬
+  - key 기준 정렬
+  ```
+    my_dict = {'c': 3, 'a': 1, 'b': 2, 'e': 1, 'd': 2}
+    
+    #오름차순
+    sorted_dict = sorted(my_dict.items())
+    print(sorted_dict)
+    
+    >>> [('a', 1), ('b', 2), ('c', 3), ('d', 2), ('e', 1)]
+    
+    #내림차순
+    sorted_dict = sorted(my_dict.items(), key = lambda item: item[0], reverse = True)
+    print(sorted_dict)
+    
+    >>> [('e', 1), ('d', 2), ('c', 3), ('b', 2), ('a', 1)]
+  ```
+  - value 기준 정렬
+  ```
+    my_dict = {'c': 3, 'a': 1, 'b': 2, 'e': 1, 'd': 2}
+    
+    #오름차순
+    sorted_dict = sorted(my_dict.items(), key = lambda item: item[1])
+    print(sorted_dict)
+    
+    >>> [('a', 1), ('e', 1), ('b', 2), ('d', 2), ('c', 3)]
+    
+    #내림차순
+    sorted_dict = sorted(my_dict.items(), key = lambda item: item[1], reverse = True)
+    print(sorted_dict)
+    
+    >>> [('c', 3), ('b', 2), ('d', 2), ('a', 1), ('e', 1)]
+  ```
 ## lambda 함수
 - 이름없는 함수, 람다표현식을 익명함수라 함  
 ![image](https://user-images.githubusercontent.com/97869193/164709759-aba5cd56-99a4-4a6b-a77c-fe04e6400164.png)
