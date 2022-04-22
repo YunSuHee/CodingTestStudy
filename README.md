@@ -1,5 +1,8 @@
 # 파이썬 자료구조, 함수
 
+[딕셔너리](#딕셔너리dict)
+
+[count 함수](#count-함수)
 
 ## rjust, ljust 함수
 
@@ -170,13 +173,13 @@ print(s2 - s1)
   ### dict 정렬
 ## lambda 함수
 - 이름없는 함수, 람다표현식을 익명함수라 함  
+![image](https://user-images.githubusercontent.com/97869193/164709759-aba5cd56-99a4-4a6b-a77c-fe04e6400164.png)
+
 ```
 f= lambda x:x+10
 print(f(10)
 
 >>> 20
-
-
 
 ```
 ## count 함수 
