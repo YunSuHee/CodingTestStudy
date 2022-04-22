@@ -56,7 +56,7 @@ def solution(s):
     answer=int(s)
     return answer
 
-#다르사람 풀이
+#다른사람 풀이
 
 
 num_dic = {"zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6", "seven":"7", "eight":"8", "nine":"9"}
