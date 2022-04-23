@@ -86,3 +86,25 @@ def solution(id_list, report, k):
                     answer[l[0]] += 1
 
     return list(answer.values())
+
+#다른사람 코드
+
+def solution2(id_list, reports, k):
+    answer = [0] * len(id_list) #메일 받을 횟수
+    dic_report = {id: [] for id in id_list}
+
+    for report in set(reports): #신고 받은 사람의 VALUE 에 신고한 사람 넣어서 몇번 신고 받았는지 보기
+        reportuser, reporteduser = report.split(' ')
+        dic_report[reporteduser].append(reportuser)
+
+
+    for key, value in dic_report.items():
+        if len(value)>=k : #신고한 사람의 수 = len(value)
+            for v in value:
+                answer[id_list.index(v)]+=1
+    return answer
+
+id_list=["muzi", "frodo", "apeach", "neo"]
+reports=["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
+k=2
+print(solution2(id_list,reports,k))
