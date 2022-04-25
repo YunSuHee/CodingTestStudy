@@ -23,3 +23,16 @@
 # 7755
 # 예제 출력 2
 # READY
+
+a=input()
+front=0
+back=0
+for i in range(len(a)):
+    if i < len(a)/2:
+        front += int(a[i])
+    else:
+        back += int(a[i])
+if front == back:
+    print("LUCKY")
+else:
+    print("READY")
