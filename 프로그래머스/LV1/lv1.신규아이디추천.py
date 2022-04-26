@@ -134,7 +134,7 @@ def solution(new_id):
     #1단계 & 2단계 소문자 치환, 제거
     answer = re.sub('[^0-9a-z_.\-]+','',new_id.lower())
     #3단계 . 2번 이상을 1개로 압축
-    answer = re.sub('\.\.+','.',answer)
+    answer = re.sub('\.\.+', '', answer)
     #4단계 양끝 . 제거
     answer = answer.strip('.')
     #5단계 빈문자열 a 추가
