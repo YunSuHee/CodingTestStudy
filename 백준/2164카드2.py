@@ -33,4 +33,4 @@ while len(q) != 1:
     if len(q) ==1:
         result = x
 
-print(x)
+print(result)
