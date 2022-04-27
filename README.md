@@ -235,5 +235,17 @@ print(f(10))
     >>> ['ox', 'o', 'x', 'oxoxox'].count('ox')
     1
     ```
+## 파이썬 문자열 합치기 join
+- "구분자".join(리스트)
+- 리스트 요소가 int 면 map으로 형변환 해줘야 join됨 아님 오류
 
+```
+num = [1, 3, 5, 7]
+num_str = ", ".join(num)	# 에러 발생
+
+num = [1, 3, 5, 7]
+num_str = ", ".join(map(str,num))
+# 1, 3, 5, 7
+
+```
   
