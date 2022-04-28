@@ -249,3 +249,16 @@ num_str = ", ".join(map(str,num))
 
 ```
   
+## 리스트 뒤에서부터 앞으로 접근
+- reversed 함수
+```
+array=[1,2,3]
+for i in reversed(array):
+    print i
+```
+- slicer
+```
+L = [0,10,20,40]
+for i in L[::-1]:
+    print i
+```
