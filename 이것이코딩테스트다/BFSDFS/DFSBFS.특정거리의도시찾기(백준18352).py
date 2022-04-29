@@ -45,4 +45,66 @@
 # 예제 출력 3
 # 2
 # 3
+# from collections import deque
+# n,m,k,x=map(int,input().split())
+# arr=[[0]*(n+1) for i in range(n+1)]
+# for i in range(m):
+#     a,b = map(int, input().split())
+#     arr[a][b]=1
+# city=[i for i in range(1,n+1)]
+#
+# q= deque()
+# for i in range(1,n+1):
+#     if arr[x][i] ==1:
+#         q.append((1,x,i))
+#         city.remove(i)
+#
+#     if x in city:
+#         city.remove(x)
+# result=[]
+# while q:
+#
+#     d, s, e = q.popleft()
+#
+#     if d > k: break
+#     if d == k: result.append(e)
+#     if e in city:
+#         city.remove(e)
+#
+#     for i in range(1, n + 1):
+#         if arr[e][i] == 1 and i in city:
+#             q.append((d + 1, e, i))
+#
+# if len(result)==0:
+#     print(-1)
+# else:
+#     for i in result:
+#         print(i)
+from collections import deque
+n,m,k,x=map(int,input().split())
+node = [list(map(int,input().split())) for i in range(m)]
+city=[i for i in range(1,n+1)]
 
+q=deque()
+for i in node:
+    if i[0]== x:
+        q.append([1,i[0],i[1]])
+        city.remove(i[1])
+
+city.remove(x)
+
+result=[]
+while q:
+    t=q.popleft()
+    if t[0]==k: result.append(t[2])
+    if t[0]>k:break
+    for i in node:
+        if i[0] ==t[2] and i[1] in city:
+            q.append([t[0]+1,i[0],i[1]])
+            city.remove(i[1])
+
+if len(result) == 0:
+    print(-1)
+else:
+    for i in result:
+        print(i)
