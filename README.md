@@ -85,6 +85,7 @@ print(s2 - s1)
 
 - 변수.find(찾을문자) -> 문자열 위치 출력
 - 변수.index(찾을문자) -> 문자열 위치 출력
+- **list에서 특정값의 인덱스를 찾을떄에는 index를 써야한다. find 쓰면 에러가 난다.**
     
     ### find, index 함수 차이점
     - find : 찾는 문자가 없는 경우에 **-1**을 출력한다. 
@@ -104,6 +105,15 @@ print(s2 - s1)
     >>> a.find('o', 1, 3)
     -1	
     # find함수는 찾는 값이 없을 때 -1을 출력한다.
+    
+    --------------------------------------------
+    a1 = [1, 1, 1, 2, 3, 4, 5, 6]
+    print(a1.index(1))
+    >>> 0
+    
+    list_a = [1, 1, 1, 2, 3, 4, 5, 6]
+    print(list_a.find(1))
+    >>> AttributeError: 'list' object has no attribute 'find'
   
     ```
    
