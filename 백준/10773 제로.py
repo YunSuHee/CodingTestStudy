@@ -53,3 +53,13 @@
 # [1] (0을 불렀기 때문에 그 다음 최근의 수를 지운다)
 # [1,6]
 # 합은 7이다.
+
+n=int(input())
+stack=[]
+for i in range(n):
+    a=int(input())
+    if a == 0:
+        stack.pop()
+    else:
+        stack.append(a)
+print(sum(stack))
