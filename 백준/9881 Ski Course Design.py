@@ -46,3 +46,6 @@ while high-low > 17:
     count+=1
 cost = count**2
 print(cost*2)
+
+
+# 다시 풀기
