@@ -45,6 +45,8 @@
 # 예제 출력 3
 # 2
 # 3
+
+#풀이 1 - 메모리 초과
 # from collections import deque
 # n,m,k,x=map(int,input().split())
 # arr=[[0]*(n+1) for i in range(n+1)]
@@ -80,31 +82,100 @@
 # else:
 #     for i in result:
 #         print(i)
+
+#풀이 2 - 시간 초과
+# from collections import deque
+# n,m,k,x=map(int,input().split())
+# node = [list(map(int,input().split())) for i in range(m)]
+# city=[i for i in range(1,n+1)]
+#
+# q=deque()
+# for i in node:
+#     if i[0]== x:
+#         q.append([1,i[0],i[1]])
+#         city.remove(i[1])
+#
+# city.remove(x)
+#
+# result=[]
+# while q:
+#     t=q.popleft()
+#     if t[0]==k: result.append(t[2])
+#     if t[0]>k:break
+#     for i in node:
+#         if i[0] ==t[2] and i[1] in city:
+#             q.append([t[0]+1,i[0],i[1]])
+#             city.remove(i[1])
+#
+# if len(result) == 0:
+#     print(-1)
+# else:
+#     for i in result:
+#         print(i)
+
+#풀이 3 - 시간 초과
+# from collections import deque
+#
+# def bfs(map, start,finish, visited):
+#     result =[]
+#     check=0
+#     q=deque([start])
+#     visited[start]=True
+#     while q:
+#         s=q.popleft()
+#         check+=1
+#         for i in map:
+#             if i[0] == s and visited[i[1]] == False:
+#                 if check == finish:
+#                     result.append(i[1])
+#                 q.append(i[1])
+#                 visited[i[1]]=True
+#         if check == finish:
+#             break
+#
+#     return result
+#
+# n,m,k,x=map(int,input().split())
+# map = [list(map(int,input().split())) for _ in range(m)]
+# visited =[False]*(n+1)
+# answer = bfs(map,x,k,visited)
+# if not answer:
+#     print(-1)
+# else:
+#     for i in answer:
+#         print(i)
+
+#풀이 4
 from collections import deque
+import sys
+input = sys.stdin.readline # 이거 안하면 시간 초과 뜸
+
 n,m,k,x=map(int,input().split())
-node = [list(map(int,input().split())) for i in range(m)]
-city=[i for i in range(1,n+1)]
+graph = [[] for _ in range(n+1)]
 
-q=deque()
-for i in node:
-    if i[0]== x:
-        q.append([1,i[0],i[1]])
-        city.remove(i[1])
+for i in range(m):
+    a,b=map(int,input().split())
+    graph[a].append(b)
 
-city.remove(x)
+distance=[-1]*(n+1)
+distance[x]=0
 
-result=[]
+q=deque([x])
 while q:
-    t=q.popleft()
-    if t[0]==k: result.append(t[2])
-    if t[0]>k:break
-    for i in node:
-        if i[0] ==t[2] and i[1] in city:
-            q.append([t[0]+1,i[0],i[1]])
-            city.remove(i[1])
+    now =q.popleft()
+    for i in graph[now]:
+        if distance[i] == -1:
+            distance[i]=distance[now]+1
+            q.append(i)
 
-if len(result) == 0:
-    print(-1)
-else:
-    for i in result:
+check = False
+for i in range(1,n+1):
+    if distance[i] == k:
         print(i)
+        check = True
+if check == False:
+    print(-1)
+
+
+
+
