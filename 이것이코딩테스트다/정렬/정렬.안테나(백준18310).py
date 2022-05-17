@@ -22,13 +22,31 @@
 # 예제 출력 1
 # 5
 
-n = int(input())
-arr = list(map(int,input().split()))
+# 시간 초과
+import sys
+
+n = int(sys.stdin.readline())
+arr = list(map(int,sys.stdin.readline().split()))
+arr.sort()
 answer = 0
+home = 0
 for i in arr:
     result =0
     for j in arr:
         result += abs(i-j)
-    answer.append(result)
+    if answer == 0:
+        answer = result
+        home = i
+    elif answer > result:
+        answer = result
+        home = i
 
-print(min(answer))
+
+print(home)
+
+#중간값 문제
+n=int(input())
+arr = list(map(int,input().split()))
+arr.sort()
+
+print(arr[(n-1)//2])

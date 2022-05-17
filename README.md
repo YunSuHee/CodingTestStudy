@@ -377,3 +377,31 @@ tuple_list.sort(key=lambda x: (x[1], x[0]))
 
 student.sort(key=lambda x:(-int(x[1]),int(x[2]),-int(x[3]),x[0]))
 ```
+
+## Hash 알고리즘
+- Hash는 key value의 형태를 갖는 하나의 자료구조 (전화번호부랑 똑같음)
+- 해시는 공간을 좀 더 사용해 시간을 축소시키며 (공간와 시간을 맞바꾼 기법)
+  데이터의 양이 어떻든 일반적인 경우 항상 O(1)을 기대할 수 있습니다.
+  해시는 특정 키(key)를 해시 함수를 통해 해시 테이블의 주소값으로 변경합니다.
+  **따라서. hashDict[hash("수희")] = 1 면 print(hashDict) 하면 {968578591888283667: 1}로 결과가 나옴**
+- 언제 해시 알고리즘을 사용하는가?
+  String을 기반으로 정보를 기록하고 관리해야 될 때 (Key가 String)
+  
+## Counter
+-데이터의 개수를 셀 때 유용한 파이썬의 collections 모듈의 Counter 클래스
+-Python이 제공하는 collections라는 모듈의 한 class
+-list를 가지고 Counter를 생성하면, Counter는 Key가 이름이고, Value가 count인 dictionary를 반환
+
+```
+import collections
+
+participant=["A","B"]
+answer = collections.Counter(participant)
+print(answer) # 결과 : Counter({'A': 1, 'B': 1})
+print(list(answer.keys())) # 결과 : ['A', 'B']
+print(list(answer.keys())[0])  # 결과 : A
+print((answer.keys()))  # 결과 : dict_keys(['A', 'B'])
+print(list(answer))  # 결과 : ['A', 'B']
+print(list(answer.values()))  # 결과 : [1, 1]
+```
+ 
