@@ -397,7 +397,6 @@ print(sorted(l))
 ```
 
 
-
 ## Hash 알고리즘
 - Hash는 key value의 형태를 갖는 하나의 자료구조 (전화번호부랑 똑같음)
 - 해시는 공간을 좀 더 사용해 시간을 축소시키며 (공간와 시간을 맞바꾼 기법)
@@ -429,4 +428,12 @@ print(list(answer.values()))  # 결과 : [1, 1]
 ```
 n=[1,2,3,4]
 n = list(map(str, n))
+```
+
+## array[-1]
+
+```
+array=[1,2]
+print(array[-1])   
+# 결과 2
 ```
