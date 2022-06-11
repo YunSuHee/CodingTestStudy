@@ -48,40 +48,81 @@
 # 1 2 2
 # 예제 출력 2
 # 0
-import sys
-import copy
 
-n,k=map(int,sys.stdin.readline().split())
-arr = []
-for i in range(n):
-    arr.append(list(map(int,sys.stdin.readline().split())))
+#시간초과
+# import sys
+# import copy
+#
+# n,k=map(int,sys.stdin.readline().split())
+# arr = []
+# for i in range(n):
+#     arr.append(list(map(int,sys.stdin.readline().split())))
+#
+# s,x,y = map(int,sys.stdin.readline().split())
+#
+# #상하좌우
+# dx=[-1,1,0,0]
+# dy=[0,0,-1,1]
+#
+# def bfs(x,y,array):
+#     result = 1000 #바이러스 수 최대가 1000
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+#         if nx < 0 or ny < 0 or nx >= n or ny >= n:
+#             continue
+#         if array[nx][ny] > 0 and array[nx][ny] < result:
+#             result = array[nx][ny]
+#     if result == 1000:
+#         return 0
+#     return result
+#
+# for i in range(s):
+#     arr2 = copy.deepcopy(arr)
+#     for i in range(n):
+#         for j in range(n):
+#             if arr2[i][j] == 0:
+#                 arr[i][j]= bfs(i,j,arr2)
+#
+# print(arr[x-1][y-1])
 
-s,x,y = map(int,sys.stdin.readline().split())
+"""
+##이코테 방식
+>> 바이러스 수, 시간, 위치 x, 위치 y를 담은 튜플을 sort 한다음 큐에 넣어
+>> 바이러스가 작은것부터 퍼지게 하고 큐를 쌓아. 그럼 다음 초에도 바이러스가 작은것부터 퍼짐. 그래서 바이러스간 비교는 안해도 됨
+"""
+from collections import deque
+n,k = map(int,input().split())
+
+graph =[]
+virus =[]
+
+for i in range (n):
+    graph.append(list(map(int,input().split())))
+    for j in range(n):
+        if graph[i][j] != 0:
+            virus.append((graph[i][j],0,i,j)) # 바이러스 종류, 시간, 위치 x, 위치 y
+
+target_s,target_x,target_y = map(int,input().split())
+virus.sort()
+q = deque(virus) # 초기 바이러스 정보 다 넣기 -> 1초일때 실행 되는 것들
 
 #상하좌우
 dx=[-1,1,0,0]
 dy=[0,0,-1,1]
 
-def bfs(x,y,array):
-    result = 1000 #바이러스 수 최대가 1000
+while q:
+    virus_num, s, x,y = q.popleft()
+    if s == target_s:
+        break
+
     for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if nx < 0 or ny < 0 or nx >= n or ny >= n:
-            continue
-        if array[nx][ny] > 0 and array[nx][ny] < result:
-            result = array[nx][ny]
-    if result == 1000:
-        return 0
-    return result
+        nx = x+dx[i]
+        ny = y+dy[i]
 
-for i in range(s):
-    arr2 = copy.deepcopy(arr)
-    for i in range(n):
-        for j in range(n):
-            if arr2[i][j] == 0:
-                arr[i][j]= bfs(i,j,arr2)
+        if nx >=0 and ny >=0 and nx < n and ny <n:
+            if graph[nx][ny] ==0:
+                graph[nx][ny] = virus_num
+                q.append((virus_num,s+1,nx,ny))
 
-print(arr[x-1][y-1])
-
-
+print(graph[target_x-1][target_y-1])
