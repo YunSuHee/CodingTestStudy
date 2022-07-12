@@ -26,7 +26,6 @@
 
 import heapq
 
-
 def solution(scoville, K):
     heap = []
     for i in scoville:
@@ -39,6 +38,25 @@ def solution(scoville, K):
         answer += 1
         new = heapq.heappop(heap) + (heapq.heappop(heap) * 2)
         heapq.heappush(heap, new)
+
+    return answer
+#다른 사람 풀이
+
+import heapq as hq
+
+def solution(scoville, K):
+
+    hq.heapify(scoville)
+    answer = 0
+    while True:
+        first = hq.heappop(scoville)
+        if first >= K:
+            break
+        if len(scoville) == 0:
+            return -1
+        second = hq.heappop(scoville)
+        hq.heappush(scoville, first + second*2)
+        answer += 1
 
     return answer
 
