@@ -29,3 +29,13 @@ for k in range(1,int(input())+1):
         else:
             print(0)
 
+# 다른 풀이
+for i in range(1,int(input())+1):
+    word = input()
+    print("#%d"%i,end=" ")
+    if word == word[::-1]:
+        print(1)
+    else:
+        print(0)
+
+
