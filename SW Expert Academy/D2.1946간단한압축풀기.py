@@ -36,9 +36,30 @@
 #
 # (t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
 testcase=int(input())
-n =int(input())
+for k in range(1,testcase+1):
+    n =int(input())
+    temp=""
+    for i in range(n):
+        alph , num = input().split()
+        temp+=alph*int(num)
+    print('#%d'%k)
+    n = 0
+    while n <len(temp):
+        print(temp[0+n:10+n])
+        n+=10
 
-for i in range(n):
-    alph , num = input().split()
-    dic[alph] = int(num)
 
+#다른 풀이
+# testcase=int(input())
+# n =int(input())
+# temp=""
+# for i in range(n):
+#     alph , num = input().split()
+#     temp+=alph*int(num)
+# print('#%d'%testcase)
+# n = 0
+# for i in range(1,len(temp)+1):
+#     if i % 10 !=0:
+#         print(temp[i-1],end="")
+#     else:
+#         print(temp[i-1])
